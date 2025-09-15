@@ -14,7 +14,7 @@ Using CTEs and window functions for advanced analytics
 
 Exploring customer segmentation and business KPIs
 
-Dataset Description
+# Dataset Description
 
 The dataset includes the following variables:
 
@@ -33,4 +33,41 @@ UnitPrice → Price per product
 CustomerID → Unique customer identifier
 
 Country → Country where the transaction occurred
-qqqqws
+
+# DATA ANALYSIS
+
+-- total number of transactions.
+
+-- the total sales revenue (Quantity × UnitPrice)
+
+-- unique products that exist in the dataset.
+
+-- customers Who have only made a single purchase
+
+-- top 10 customers by total spend.
+
+--monthly revenue trend across the dataset
+
+--Use a window function to rank customers by spend within each country.
+
+--Identify the fastest growing products by revenue YoY.
+
+--Identify product bundles (frequently purchased together) 
+
+
+# Deliverables
+
+A collection of SQL scripts answering all Questions
+
+# Learning Outcomes
+
+By completing this project, you will:
+
+Gain hands-on SQL experience with realistic e-commerce data
+
+Learn to apply aggregations, joins, CTEs, and window functions
+
+Build confidence for data analyst & BI interviews
+
+Understand customer behavior & sales trends
+
