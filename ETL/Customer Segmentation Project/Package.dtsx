@@ -1,0 +1,692 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/13/2025 9:27:12 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="ADMINISTRATOR"
+  DTS:CreatorName="ADMINISTRATOR\henry"
+  DTS:DTSID="{4D5578F1-CD1F-4BE8-91A8-2E1BA3C71640}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5685.2"
+  DTS:LocaleID="8192"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="2"
+  DTS:VersionGUID="{84E26ADA-2A14-4B6E-BBA0-7320036B44A5}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[ADMINISTRATOR.HenryKinyaraDatabase]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{65D9BAD1-1E10-4D46-B1C3-3F3BF62FE48E}"
+      DTS:ObjectName="ADMINISTRATOR.HenryKinyaraDatabase">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=ADMINISTRATOR;Initial Catalog=HenryKinyaraDatabase;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package-{65D9BAD1-1E10-4D46-B1C3-3F3BF62FE48E}ADMINISTRATOR.HenryKinyaraDatabase;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{30709955-2E93-469D-996A-0AF052049D77}"
+      DTS:ObjectName="Excel Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\henry\Documents\SQL Practice Scripts\Customer Segmentation\Dataset\Online Retail.xlsx;Extended Properties=&quot;Excel 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Dataset to SQL Database"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{73DEF75E-7176-4934-BA47-7FFB00F05383}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Dataset to SQL Database"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Dataset to SQL Database\Load Date"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Load Date"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Dataset to SQL Database\Load Date.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Dataset to SQL Database\Load Date.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Dataset to SQL Database\Load Date.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Dataset to SQL Database\Load Date.Outputs[Derived Column Output].Columns[Load Date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Dataset to SQL Database\Load Date.Outputs[Derived Column Output].Columns[Load Date]"
+                      name="Load Date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[GETDATE]()</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">GETDATE()</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Dataset to SQL Database\Load Date.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Dataset to SQL Database\Load Date.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Dataset to SQL Database\Load Date.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Dataset to SQL Database\Load Date.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Dataset to SQL Database\Load Date.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Dataset to SQL Database\Load Date.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Dataset to SQL Database\Online Retail Data"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Online Retail Data"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">'Online Retail$'</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Dataset to SQL Database\Online Retail Data.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Dataset to SQL Database\Online Retail Data.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Dataset to SQL Database\Online Retail Data.Outputs[Excel Source Output].Columns[InvoiceNo]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dataset to SQL Database\Online Retail Data.Outputs[Excel Source Output].ExternalColumns[InvoiceNo]"
+                      lineageId="Package\Dataset to SQL Database\Online Retail Data.Outputs[Excel Source Output].Columns[InvoiceNo]"
+                      name="InvoiceNo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Dataset to SQL Database\Online Retail Data.Outputs[Excel Source Output].Columns[StockCode]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dataset to SQL Database\Online Retail Data.Outputs[Excel Source Output].ExternalColumns[StockCode]"
+                      length="255"
+                      lineageId="Package\Dataset to SQL Database\Online Retail Data.Outputs[Excel Source Output].Columns[StockCode]"
+                      name="StockCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Dataset to SQL Database\Online Retail Data.Outputs[Excel Source Output].Columns[Description]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dataset to SQL Database\Online Retail Data.Outputs[Excel Source Output].ExternalColumns[Description]"
+                      length="255"
+                      lineageId="Package\Dataset to SQL Database\Online Retail Data.Outputs[Excel Source Output].Columns[Description]"
+                      name="Description"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Dataset to SQL Database\Online Retail Data.Outputs[Excel Source Output].Columns[Quantity]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dataset to SQL Database\Online Retail Data.Outputs[Excel Source Output].ExternalColumns[Quantity]"
+                      lineageId="Package\Dataset to SQL Database\Online Retail Data.Outputs[Excel Source Output].Columns[Quantity]"
+                      name="Quantity"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Dataset to SQL Database\Online Retail Data.Outputs[Excel Source Output].Columns[InvoiceDate]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dataset to SQL Database\Online Retail Data.Outputs[Excel Source Output].ExternalColumns[InvoiceDate]"
+                      lineageId="Package\Dataset to SQL Database\Online Retail Data.Outputs[Excel Source Output].Columns[InvoiceDate]"
+                      name="InvoiceDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Dataset to SQL Database\Online Retail Data.Outputs[Excel Source Output].Columns[UnitPrice]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dataset to SQL Database\Online Retail Data.Outputs[Excel Source Output].ExternalColumns[UnitPrice]"
+                      lineageId="Package\Dataset to SQL Database\Online Retail Data.Outputs[Excel Source Output].Columns[UnitPrice]"
+                      name="UnitPrice"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Dataset to SQL Database\Online Retail Data.Outputs[Excel Source Output].Columns[CustomerID]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dataset to SQL Database\Online Retail Data.Outputs[Excel Source Output].ExternalColumns[CustomerID]"
+                      lineageId="Package\Dataset to SQL Database\Online Retail Data.Outputs[Excel Source Output].Columns[CustomerID]"
+                      name="CustomerID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Dataset to SQL Database\Online Retail Data.Outputs[Excel Source Output].Columns[Country]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dataset to SQL Database\Online Retail Data.Outputs[Excel Source Output].ExternalColumns[Country]"
+                      length="255"
+                      lineageId="Package\Dataset to SQL Database\Online Retail Data.Outputs[Excel Source Output].Columns[Country]"
+                      name="Country"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Dataset to SQL Database\Online Retail Data.Outputs[Excel Source Output].ExternalColumns[InvoiceNo]"
+                      dataType="r8"
+                      name="InvoiceNo" />
+                    <externalMetadataColumn
+                      refId="Package\Dataset to SQL Database\Online Retail Data.Outputs[Excel Source Output].ExternalColumns[StockCode]"
+                      dataType="wstr"
+                      length="255"
+                      name="StockCode" />
+                    <externalMetadataColumn
+                      refId="Package\Dataset to SQL Database\Online Retail Data.Outputs[Excel Source Output].ExternalColumns[Description]"
+                      dataType="wstr"
+                      length="255"
+                      name="Description" />
+                    <externalMetadataColumn
+                      refId="Package\Dataset to SQL Database\Online Retail Data.Outputs[Excel Source Output].ExternalColumns[Quantity]"
+                      dataType="r8"
+                      name="Quantity" />
+                    <externalMetadataColumn
+                      refId="Package\Dataset to SQL Database\Online Retail Data.Outputs[Excel Source Output].ExternalColumns[InvoiceDate]"
+                      dataType="date"
+                      name="InvoiceDate" />
+                    <externalMetadataColumn
+                      refId="Package\Dataset to SQL Database\Online Retail Data.Outputs[Excel Source Output].ExternalColumns[UnitPrice]"
+                      dataType="r8"
+                      name="UnitPrice" />
+                    <externalMetadataColumn
+                      refId="Package\Dataset to SQL Database\Online Retail Data.Outputs[Excel Source Output].ExternalColumns[CustomerID]"
+                      dataType="r8"
+                      name="CustomerID" />
+                    <externalMetadataColumn
+                      refId="Package\Dataset to SQL Database\Online Retail Data.Outputs[Excel Source Output].ExternalColumns[Country]"
+                      dataType="wstr"
+                      length="255"
+                      name="Country" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Dataset to SQL Database\Online Retail Data.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Dataset to SQL Database\Online Retail Data.Outputs[Excel Source Error Output].Columns[InvoiceNo]"
+                      dataType="r8"
+                      lineageId="Package\Dataset to SQL Database\Online Retail Data.Outputs[Excel Source Error Output].Columns[InvoiceNo]"
+                      name="InvoiceNo" />
+                    <outputColumn
+                      refId="Package\Dataset to SQL Database\Online Retail Data.Outputs[Excel Source Error Output].Columns[StockCode]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Dataset to SQL Database\Online Retail Data.Outputs[Excel Source Error Output].Columns[StockCode]"
+                      name="StockCode" />
+                    <outputColumn
+                      refId="Package\Dataset to SQL Database\Online Retail Data.Outputs[Excel Source Error Output].Columns[Description]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Dataset to SQL Database\Online Retail Data.Outputs[Excel Source Error Output].Columns[Description]"
+                      name="Description" />
+                    <outputColumn
+                      refId="Package\Dataset to SQL Database\Online Retail Data.Outputs[Excel Source Error Output].Columns[Quantity]"
+                      dataType="r8"
+                      lineageId="Package\Dataset to SQL Database\Online Retail Data.Outputs[Excel Source Error Output].Columns[Quantity]"
+                      name="Quantity" />
+                    <outputColumn
+                      refId="Package\Dataset to SQL Database\Online Retail Data.Outputs[Excel Source Error Output].Columns[InvoiceDate]"
+                      dataType="date"
+                      lineageId="Package\Dataset to SQL Database\Online Retail Data.Outputs[Excel Source Error Output].Columns[InvoiceDate]"
+                      name="InvoiceDate" />
+                    <outputColumn
+                      refId="Package\Dataset to SQL Database\Online Retail Data.Outputs[Excel Source Error Output].Columns[UnitPrice]"
+                      dataType="r8"
+                      lineageId="Package\Dataset to SQL Database\Online Retail Data.Outputs[Excel Source Error Output].Columns[UnitPrice]"
+                      name="UnitPrice" />
+                    <outputColumn
+                      refId="Package\Dataset to SQL Database\Online Retail Data.Outputs[Excel Source Error Output].Columns[CustomerID]"
+                      dataType="r8"
+                      lineageId="Package\Dataset to SQL Database\Online Retail Data.Outputs[Excel Source Error Output].Columns[CustomerID]"
+                      name="CustomerID" />
+                    <outputColumn
+                      refId="Package\Dataset to SQL Database\Online Retail Data.Outputs[Excel Source Error Output].Columns[Country]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Dataset to SQL Database\Online Retail Data.Outputs[Excel Source Error Output].Columns[Country]"
+                      name="Country" />
+                    <outputColumn
+                      refId="Package\Dataset to SQL Database\Online Retail Data.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Dataset to SQL Database\Online Retail Data.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Dataset to SQL Database\Online Retail Data.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Dataset to SQL Database\Online Retail Data.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Dataset to SQL Database\SQL Database"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="SQL Database"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[Online Retail]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Dataset to SQL Database\SQL Database.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[ADMINISTRATOR.HenryKinyaraDatabase]"
+                  connectionManagerRefId="Package.ConnectionManagers[ADMINISTRATOR.HenryKinyaraDatabase]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Dataset to SQL Database\SQL Database.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Dataset to SQL Database\SQL Database.Inputs[OLE DB Destination Input].Columns[InvoiceNo]"
+                      cachedDataType="r8"
+                      cachedName="InvoiceNo"
+                      externalMetadataColumnId="Package\Dataset to SQL Database\SQL Database.Inputs[OLE DB Destination Input].ExternalColumns[InvoiceNo]"
+                      lineageId="Package\Dataset to SQL Database\Online Retail Data.Outputs[Excel Source Output].Columns[InvoiceNo]" />
+                    <inputColumn
+                      refId="Package\Dataset to SQL Database\SQL Database.Inputs[OLE DB Destination Input].Columns[StockCode]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="StockCode"
+                      externalMetadataColumnId="Package\Dataset to SQL Database\SQL Database.Inputs[OLE DB Destination Input].ExternalColumns[StockCode]"
+                      lineageId="Package\Dataset to SQL Database\Online Retail Data.Outputs[Excel Source Output].Columns[StockCode]" />
+                    <inputColumn
+                      refId="Package\Dataset to SQL Database\SQL Database.Inputs[OLE DB Destination Input].Columns[Description]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Description"
+                      externalMetadataColumnId="Package\Dataset to SQL Database\SQL Database.Inputs[OLE DB Destination Input].ExternalColumns[Description]"
+                      lineageId="Package\Dataset to SQL Database\Online Retail Data.Outputs[Excel Source Output].Columns[Description]" />
+                    <inputColumn
+                      refId="Package\Dataset to SQL Database\SQL Database.Inputs[OLE DB Destination Input].Columns[Quantity]"
+                      cachedDataType="r8"
+                      cachedName="Quantity"
+                      externalMetadataColumnId="Package\Dataset to SQL Database\SQL Database.Inputs[OLE DB Destination Input].ExternalColumns[Quantity]"
+                      lineageId="Package\Dataset to SQL Database\Online Retail Data.Outputs[Excel Source Output].Columns[Quantity]" />
+                    <inputColumn
+                      refId="Package\Dataset to SQL Database\SQL Database.Inputs[OLE DB Destination Input].Columns[InvoiceDate]"
+                      cachedDataType="date"
+                      cachedName="InvoiceDate"
+                      externalMetadataColumnId="Package\Dataset to SQL Database\SQL Database.Inputs[OLE DB Destination Input].ExternalColumns[InvoiceDate]"
+                      lineageId="Package\Dataset to SQL Database\Online Retail Data.Outputs[Excel Source Output].Columns[InvoiceDate]" />
+                    <inputColumn
+                      refId="Package\Dataset to SQL Database\SQL Database.Inputs[OLE DB Destination Input].Columns[UnitPrice]"
+                      cachedDataType="r8"
+                      cachedName="UnitPrice"
+                      externalMetadataColumnId="Package\Dataset to SQL Database\SQL Database.Inputs[OLE DB Destination Input].ExternalColumns[UnitPrice]"
+                      lineageId="Package\Dataset to SQL Database\Online Retail Data.Outputs[Excel Source Output].Columns[UnitPrice]" />
+                    <inputColumn
+                      refId="Package\Dataset to SQL Database\SQL Database.Inputs[OLE DB Destination Input].Columns[CustomerID]"
+                      cachedDataType="r8"
+                      cachedName="CustomerID"
+                      externalMetadataColumnId="Package\Dataset to SQL Database\SQL Database.Inputs[OLE DB Destination Input].ExternalColumns[CustomerID]"
+                      lineageId="Package\Dataset to SQL Database\Online Retail Data.Outputs[Excel Source Output].Columns[CustomerID]" />
+                    <inputColumn
+                      refId="Package\Dataset to SQL Database\SQL Database.Inputs[OLE DB Destination Input].Columns[Country]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Country"
+                      externalMetadataColumnId="Package\Dataset to SQL Database\SQL Database.Inputs[OLE DB Destination Input].ExternalColumns[Country]"
+                      lineageId="Package\Dataset to SQL Database\Online Retail Data.Outputs[Excel Source Output].Columns[Country]" />
+                    <inputColumn
+                      refId="Package\Dataset to SQL Database\SQL Database.Inputs[OLE DB Destination Input].Columns[Load Date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Load Date"
+                      externalMetadataColumnId="Package\Dataset to SQL Database\SQL Database.Inputs[OLE DB Destination Input].ExternalColumns[Load Date]"
+                      lineageId="Package\Dataset to SQL Database\Load Date.Outputs[Derived Column Output].Columns[Load Date]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Dataset to SQL Database\SQL Database.Inputs[OLE DB Destination Input].ExternalColumns[InvoiceNo]"
+                      dataType="r8"
+                      name="InvoiceNo" />
+                    <externalMetadataColumn
+                      refId="Package\Dataset to SQL Database\SQL Database.Inputs[OLE DB Destination Input].ExternalColumns[StockCode]"
+                      dataType="wstr"
+                      length="255"
+                      name="StockCode" />
+                    <externalMetadataColumn
+                      refId="Package\Dataset to SQL Database\SQL Database.Inputs[OLE DB Destination Input].ExternalColumns[Description]"
+                      dataType="wstr"
+                      length="255"
+                      name="Description" />
+                    <externalMetadataColumn
+                      refId="Package\Dataset to SQL Database\SQL Database.Inputs[OLE DB Destination Input].ExternalColumns[Quantity]"
+                      dataType="r8"
+                      name="Quantity" />
+                    <externalMetadataColumn
+                      refId="Package\Dataset to SQL Database\SQL Database.Inputs[OLE DB Destination Input].ExternalColumns[InvoiceDate]"
+                      dataType="dbTimeStamp"
+                      name="InvoiceDate" />
+                    <externalMetadataColumn
+                      refId="Package\Dataset to SQL Database\SQL Database.Inputs[OLE DB Destination Input].ExternalColumns[UnitPrice]"
+                      dataType="r8"
+                      name="UnitPrice" />
+                    <externalMetadataColumn
+                      refId="Package\Dataset to SQL Database\SQL Database.Inputs[OLE DB Destination Input].ExternalColumns[CustomerID]"
+                      dataType="r8"
+                      name="CustomerID" />
+                    <externalMetadataColumn
+                      refId="Package\Dataset to SQL Database\SQL Database.Inputs[OLE DB Destination Input].ExternalColumns[Country]"
+                      dataType="wstr"
+                      length="255"
+                      name="Country" />
+                    <externalMetadataColumn
+                      refId="Package\Dataset to SQL Database\SQL Database.Inputs[OLE DB Destination Input].ExternalColumns[Load Date]"
+                      dataType="dbTimeStamp"
+                      name="Load Date" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Dataset to SQL Database\SQL Database.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Dataset to SQL Database\SQL Database.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Dataset to SQL Database\SQL Database.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Dataset to SQL Database\SQL Database.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Dataset to SQL Database\SQL Database.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Dataset to SQL Database\SQL Database.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Dataset to SQL Database.Paths[Derived Column Output]"
+              endId="Package\Dataset to SQL Database\SQL Database.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Dataset to SQL Database\Load Date.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Dataset to SQL Database.Paths[Excel Source Output]"
+              endId="Package\Dataset to SQL Database\Load Date.Inputs[Derived Column Input]"
+              name="Excel Source Output"
+              startId="Package\Dataset to SQL Database\Online Retail Data.Outputs[Excel Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="196.8,41.6"
+          Id="Package\Dataset to SQL Database"
+          TopLeft="428.333309930233,143.866665666236" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Dataset to SQL Database">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="162.4,41.6"
+          Id="Package\Dataset to SQL Database\Online Retail Data"
+          TopLeft="409.166644310787,18.1999998734395" />
+        <NodeLayout
+          Size="146.4,41.6"
+          Id="Package\Dataset to SQL Database\SQL Database"
+          TopLeft="415.833310613203,295.533331278231" />
+        <NodeLayout
+          Size="126.4,41.6"
+          Id="Package\Dataset to SQL Database\Load Date"
+          TopLeft="424.999976779025,148.199998969436" />
+        <EdgeLayout
+          Id="Package\Dataset to SQL Database.Paths[Excel Source Output]"
+          TopLeft="489.283310544906,59.7999998734395">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,88.3999990959962"
+              Start="0,0"
+              End="0,80.8999990959962">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,80.8999990959962" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Dataset to SQL Database.Paths[Derived Column Output]"
+          TopLeft="488.616643696114,189.799998969436">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,105.733332308796"
+              Start="0,0"
+              End="0,98.2333323087957">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,98.2333323087957" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Dataset to SQL Database\Online Retail Data">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Dataset to SQL Database\SQL Database">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

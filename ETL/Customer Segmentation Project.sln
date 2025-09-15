@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35931.197 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{C9674DCB-5085-4A16-B785-4C70DD1589BD}") = "Customer Segmentation Project", "Customer Segmentation Project\Customer Segmentation Project.dtproj", "{43E7657A-EE14-AFDC-93AF-276239DF142E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{43E7657A-EE14-AFDC-93AF-276239DF142E}.Development|Default.ActiveCfg = Development
+		{43E7657A-EE14-AFDC-93AF-276239DF142E}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0F28CE9F-C98A-4687-9F75-6A97A1FFAC9D}
+	EndGlobalSection
+EndGlobal
